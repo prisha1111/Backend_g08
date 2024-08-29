@@ -1,0 +1,4 @@
+PS C:\Users\prish\OneDrive\Desktop> git clone https://github.com/prisha1111/Backend_g08.git
+fatal: destination path 'Backend_g08' already exists and is not an empty directory.
+PS C:\Users\prish\OneDrive\Desktop> cd Backend_g08
+PS C:\Users\prish\OneDrive\Desktop\Backend_g08> code .
