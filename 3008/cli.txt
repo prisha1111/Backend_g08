@@ -1,0 +1,151 @@
+chitkara> db.student.find({
+... marks: {$gt:40}
+... })
+[
+  {
+    _id: ObjectId('66cef696bae9c9b62446b79e'),
+    name: 'Emily',
+    age: 21,
+    marks: 48,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b79f'),
+    name: 'Michael',
+    age: 20,
+    marks: 42,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a0'),
+    name: 'Sarah',
+    age: 23,
+    marks: 56,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a1'),
+    name: 'David',
+    age: 24,
+    marks: 52,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a2'),
+    name: 'Ram',
+    age: 25,
+    marks: 58,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  }
+]
+
+chitkara> db.student.find( { $or: [ { marks: { $lt: 60 } }, { age: 23 } ] } )
+[
+  {
+    _id: ObjectId('66cef696bae9c9b62446b79e'),
+    name: 'Emily',
+    age: 21,
+    marks: 48,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b79f'),
+    name: 'Michael',
+    age: 20,
+    marks: 42,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a0'),
+    name: 'Sarah',
+    age: 23,
+    marks: 56,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a1'),
+    name: 'David',
+    age: 24,
+    marks: 52,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  },
+  {
+    _id: ObjectId('66cef696bae9c9b62446b7a2'),
+    name: 'Ram',
+    age: 25,
+    marks: 58,
+    subject: 'Data Science',
+    address: 'Chitkara University'
+  }
+]
+chitkara> db.student.updateOne(
+... {"name": "Emily"},
+... {$set: {"marks": 60}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+chitkara> db.student.updateMany(
+... {
+chitkara> db.faculty.updateMany(
+... {rating: {$gt:4}},
+... {$set: {"Voting" :true}}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 5,
+  modifiedCount: 5,
+  upsertedCount: 0
+}
+chitkara> db.faculty.findOneAndUpdate(
+... {"name": "Sam"},
+... {$inc: {"age":5}}
+... )
+{
+  _id: ObjectId('66ceee06bae9c9b62446b799'),
+  name: 'Sam',
+  age: 20,
+  subject: 'Hindi',
+  rating: 5,
+  Voting: true
+}
+chitkara> db.faculty.replaceOne(
+... {"name": "Sam"},
+... {"name" : "Sam", "subject": "Hindi"}
+... )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+
+chitkara> db.section.deleteOne({_id: ObjectId("66d192a8d0a47857ce46b799")})
+{ acknowledged: true, deletedCount: 1 }
+chitkara> db.section.deleteMany({"duration": "3 weeks"})
+{ acknowledged: true, deletedCount: 1 }
+chitkara> db.faculty.findOneAndDelete(
+... {"name":"Sarah"})
+{
+  _id: ObjectId('66ceee06bae9c9b62446b79d'),
+  name: 'Sarah',
+  age: 23,
+  subject: 'Science',
+  rating: 5,
+  Voting: true
+}
